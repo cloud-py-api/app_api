@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deployment &mdash; AppAPI latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=92f2225a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/dark.css?v=41caee7b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/light.css?v=c3d70dd7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/tabs.js?v=3ee01567"></script>
+        <script src="../_static/js/script.js?v=783f4f19"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Authentication" href="Authentication.html" />
+    <link rel="prev" title="Api Scopes" href="ApiScopes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AppAPI
+              <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DeployConfigurations.html">Deployment configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CreationOfDeployDaemon.html">Creation of Deploy Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingExternalApplications.html">Managing External Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">Concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Technical details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InstallationFlow.html">App Installation Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ApiScopes.html">Api Scopes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#daemonconfig-registration">DaemonConfig registration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#exapp-registration">ExApp registration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manual-install-for-development">Manual install for development</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deploy-env-variables">Deploy env variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#application-installation-scheme">Application installation scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exapp-info-xml-schema">ExApp info.xml schema</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html">AppAPI Nextcloud APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AppAPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Technical details</a></li>
+      <li class="breadcrumb-item active">Deployment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tech_details/Deployment.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deployment">
+<h1>Deployment<a class="headerlink" href="#deployment" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>AppAPI ExApps deployment process in short consists of 2 steps:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#daemonconfig-registration">DaemonConfig registration</a></p></li>
+<li><p><a class="reference internal" href="#exapp-registration">ExApp registration</a></p></li>
+</ol>
+</section>
+<section id="daemonconfig-registration">
+<span id="occ-daemon-config-registration"></span><h2>DaemonConfig registration<a class="headerlink" href="#daemonconfig-registration" title="Link to this heading"></a></h2>
+<p>The first step is to register DaemonConfig, where your ExApps will be deployed.
+Before that you will need to configure your Docker socket to be accessible by Nextcloud instance and webserver user.
+In case of remote Docker Engine API, you will need to expose it so it is accessible by Nextcloud instance and import certificates.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For now only Docker daemon <code class="docutils literal notranslate"><span class="pre">accepts-deploy-id:</span> <span class="pre">docker-install</span></code> is supported.
+For development and manually deployed app in docker there is <code class="docutils literal notranslate"><span class="pre">accepts-deploy-id:</span> <span class="pre">manual-install</span></code>.</p>
+</div>
+<p>This can be done by <code class="docutils literal notranslate"><span class="pre">occ</span></code> CLI command <strong>app_api:daemon:register</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_api:daemon:register<span class="w"> </span>&lt;name&gt;<span class="w"> </span>&lt;display-name&gt;<span class="w"> </span>&lt;accepts-deploy-id&gt;<span class="w"> </span>&lt;protocol&gt;<span class="w"> </span>&lt;host&gt;<span class="w"> </span>&lt;nextcloud_url&gt;<span class="w"> </span><span class="o">[</span>--net<span class="w"> </span>NET<span class="o">]</span><span class="w"> </span><span class="o">[</span>--haproxy_password<span class="w"> </span>PASSWORD<span class="o">]</span><span class="w"> </span><span class="o">[</span>--<span class="o">]</span>
+</pre></div>
+</div>
+<section id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - unique name of the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">docker_local_sock</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display-name</span></code> - name of the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Local</span> <span class="pre">Docker</span></code>, will be displayed in the UI)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">accepts-deploy-id</span></code> - type of deployment (<code class="docutils literal notranslate"><span class="pre">docker-install</span></code> or <code class="docutils literal notranslate"><span class="pre">manual-install</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protocol</span></code> - protocol used to connect to the daemon (<code class="docutils literal notranslate"><span class="pre">http</span></code> or <code class="docutils literal notranslate"><span class="pre">https</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host</span></code> - host of the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">/var/run/docker.sock</span></code> or <code class="docutils literal notranslate"><span class="pre">host:port</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nextcloud_url</span></code> - Nextcloud URL, Daemon config required option (e.g. <code class="docutils literal notranslate"><span class="pre">https://nextcloud.local</span></code>)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="options">
+<h3>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--net</span> <span class="pre">[network-name]</span></code>  - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> network name to bind docker container to (default: <code class="docutils literal notranslate"><span class="pre">host</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--haproxy_password</span> <span class="pre">PASSWORD</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> password if <code class="docutils literal notranslate"><span class="pre">AppAPI</span> <span class="pre">Docker</span> <span class="pre">Socket</span> <span class="pre">Proxy</span></code> is used</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--gpu</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> GPU device to expose to the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">/dev/dri</span></code>)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Common configurations are tested by CI in our repository, see <a class="reference external" href="https://github.com/cloud-py-api/app_api/blob/main/.github/workflows/tests-deploy.yml">workflows on github</a>.</p>
+</div>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<p>Example of <code class="docutils literal notranslate"><span class="pre">occ</span></code> <strong>app_api:daemon:register</strong> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:register<span class="w"> </span>docker_local_sock<span class="w"> </span><span class="s2">&quot;My Local Docker&quot;</span><span class="w"> </span>docker-install<span class="w"> </span>http<span class="w"> </span>/var/run/docker.sock<span class="w"> </span><span class="s2">&quot;https://nextcloud.local&quot;</span><span class="w"> </span>--net<span class="w"> </span>nextcloud
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exapp-registration">
+<h2>ExApp registration<a class="headerlink" href="#exapp-registration" title="Link to this heading"></a></h2>
+<p>Second and final step is to deploy and register ExApp in Nextcloud on previously registered daemon.
+This can be done by <code class="docutils literal notranslate"><span class="pre">occ</span></code> CLI command <strong>app_api:app:register</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_api:app:register<span class="w"> </span>&lt;appid&gt;<span class="w"> </span>&lt;daemon-config-name&gt;<span class="w"> </span><span class="o">[</span>--force-scopes<span class="o">]</span><span class="w"> </span><span class="o">[</span>--<span class="o">]</span>
+</pre></div>
+</div>
+<section id="id1">
+<h3>Arguments<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">appid</span></code> - unique name of the ExApp (e.g. <code class="docutils literal notranslate"><span class="pre">app_python_skeleton</span></code>, must be the same as in deployed container)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">daemon-config-name</span></code> - unique name of the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">docker_local_sock</span></code>)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Options<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--force-scopes</span></code> <strong>[optional]</strong> - force scopes approval</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--info-xml</span> <span class="pre">INFO-XML</span></code> <strong>[optional]</strong> - path to info.xml file with ExApp description (url or local absolute path)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--json-info</span> <span class="pre">JSON-INFO</span></code> <strong>[optional]</strong> - JSON with ExApp description</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>After successful deployment (pull, create and start container), there is a heartbeat check with 90 seconds timeout (will be configurable).</p>
+</div>
+</section>
+<section id="manual-install-for-development">
+<h3>Manual install for development<a class="headerlink" href="#manual-install-for-development" title="Link to this heading"></a></h3>
+<p>For development purposes, you can install ExApp manually.
+There is a <code class="docutils literal notranslate"><span class="pre">manual-install</span></code> DeployConfig type, which can be used in case of development.
+For ExApp registration with it you need to provide JSON app info or a path to app XML file.</p>
+<p>For all examples and applications we release we usually add manual_install command in it’s makefile for easier development.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">app_api</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">register</span> <span class="n">nc_py_api</span> <span class="n">manual_install</span> <span class="o">--</span><span class="n">json</span><span class="o">-</span><span class="n">info</span> \
+    <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">id</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">nc_py_api</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">name</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">nc_py_api</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">daemon_config_name</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">manual_install</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">version</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">1.0.0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">secret</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">12345</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">port</span><span class="se">\&quot;</span><span class="s2">:$APP_PORT,</span><span class="se">\&quot;</span><span class="s2">scopes</span><span class="se">\&quot;</span><span class="s2">:[</span><span class="se">\&quot;</span><span class="s2">SYSTEM</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">FILES</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">FILES_SHARING</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">USER_INFO</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">USER_STATUS</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">NOTIFICATIONS</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">WEATHER_STATUS</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">TALK</span><span class="se">\&quot;</span><span class="s2">],</span><span class="se">\&quot;</span><span class="s2">system</span><span class="se">\&quot;</span><span class="s2">:1}&quot;</span> \
+    <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">scopes</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Deployment/Startup of App should be done by developer when ``manual-install`` DeployConfig type is used.</strong></p>
+</div>
+</section>
+<section id="deploy-env-variables">
+<h3>Deploy env variables<a class="headerlink" href="#deploy-env-variables" title="Link to this heading"></a></h3>
+<p>Deploy env variables are used to configure ExApp container.
+The following env variables are required and built automatically:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AA_VERSION</span></code> - AppAPI version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_SECRET</span></code> - generated shared secret used for AppAPI authentication</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_ID</span></code> - ExApp appid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_DISPLAY_NAME</span></code> - ExApp display name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_VERSION</span></code> - ExApp version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_HOST</span></code> - host ExApp is listening on</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_PORT</span></code> - port ExApp is listening on (randomly selected by AppAPI)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_PERSISTENT_STORAGE</span></code> - path to mounted volume for persistent data storage between ExApp updates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_URL</span></code> - Nextcloud URL to connect to</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="application-installation-scheme">
+<h2>Application installation scheme<a class="headerlink" href="#application-installation-scheme" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>AppAPI deploys the application and launches it.</p></li>
+<li><p>AppAPI for <cite>N</cite> seconds (default <code class="docutils literal notranslate"><span class="pre">90</span></code>) checks the <code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code> endpoint with <code class="docutils literal notranslate"><span class="pre">GET</span></code> request.</p></li>
+<li><p>AppAPI sends a <code class="docutils literal notranslate"><span class="pre">POST</span></code> to the <code class="docutils literal notranslate"><span class="pre">/init</span></code> endpoint.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if ExApp do not implements <code class="docutils literal notranslate"><span class="pre">/init</span></code> endpoint and
+AppAPI receives 501 or 404 status error, AppAPI enables the application by going to point 5.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>ExApp</strong> sends an integer from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">100</span></code> to the OCS endpoint <code class="docutils literal notranslate"><span class="pre">apps/app_api/apps/status</span></code> indicating the initialization progress. After sending <code class="docutils literal notranslate"><span class="pre">100</span></code>, the application is considered initialized.</p></li>
+<li><p>AppAPI sends a PUT to the <code class="docutils literal notranslate"><span class="pre">/enabled</span></code> endpoint.</p></li>
+</ol>
+</section>
+<section id="exapp-info-xml-schema">
+<h2>ExApp info.xml schema<a class="headerlink" href="#exapp-info-xml-schema" title="Link to this heading"></a></h2>
+<p>ExApp info.xml (<a class="reference external" href="https://github.com/cloud-py-api/nc_py_api/blob/main/examples/as_app/talk_bot/appinfo/info.xml">example</a>) file is used to describe ExApp params.
+It is used to generate ExApp docker container and to register ExApp in Nextcloud.
+It has the same structure as Nextcloud appinfo/info.xml file, but with some additional fields:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>...
+<span class="nt">&lt;ex-app&gt;</span>
+<span class="w">        </span><span class="nt">&lt;docker-install&gt;</span>
+<span class="w">                </span><span class="nt">&lt;registry&gt;</span>ghcr.io<span class="nt">&lt;/registry&gt;</span>
+<span class="w">                </span><span class="nt">&lt;image&gt;</span>cloud-py-api/talk_bot<span class="nt">&lt;/image&gt;</span>
+<span class="w">                </span><span class="nt">&lt;image-tag&gt;</span>latest<span class="nt">&lt;/image-tag&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/docker-install&gt;</span>
+<span class="w">        </span><span class="nt">&lt;scopes&gt;</span>
+<span class="w">                </span><span class="nt">&lt;value&gt;</span>TALK<span class="nt">&lt;/value&gt;</span>
+<span class="w">                </span><span class="nt">&lt;value&gt;</span>TALK_BOT<span class="nt">&lt;/value&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/scopes&gt;</span>
+<span class="w">        </span><span class="nt">&lt;system&gt;</span>0<span class="nt">&lt;/system&gt;</span>
+<span class="nt">&lt;/ex-app&gt;</span>
+...
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ApiScopes.html" class="btn btn-neutral float-left" title="Api Scopes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Authentication.html" class="btn btn-neutral float-right" title="Authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Nextcloud GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

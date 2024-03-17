@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Actions Menu &mdash; AppAPI latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/styles.css?v=92f2225a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/dark.css?v=41caee7b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/light.css?v=c3d70dd7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../_static/js/script.js?v=783f4f19"></script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Top Menu Entry" href="topmenu.html" />
+    <link rel="prev" title="Miscellaneous OCS APIs" href="utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            AppAPI
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DeployConfigurations.html">Deployment configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CreationOfDeployDaemon.html">Creation of Deploy Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ManagingExternalApplications.html">Managing External Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Concepts.html">Concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Technical details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../InstallationFlow.html">App Installation Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ApiScopes.html">Api Scopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Deployment.html">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Translations.html">Translations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AppAPI Nextcloud APIs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appconfig.html">AppConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preferences.html">Preferences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exapp.html">ExApp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">Miscellaneous OCS APIs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File Actions Menu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#register">Register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unregister">Unregister</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#action-payload-to-exapp">Action payload to ExApp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#request-flow">Request flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="topmenu.html">Top Menu Entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html">Declarative Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="talkbots.html">Talk bots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="speechtotext.html">Speech-To-Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="textprocessing.html">Text-Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machinetranslation.html">Machine Translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="other_ocs.html">Other OCS APIs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../DevSetup.html">Setting up dev environment</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AppAPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Technical details</a></li>
+          <li class="breadcrumb-item"><a href="index.html">AppAPI Nextcloud APIs</a></li>
+      <li class="breadcrumb-item active">File Actions Menu</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/tech_details/api/fileactionsmenu.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-actions-menu">
+<span id="file-actions-menu-section"></span><h1>File Actions Menu<a class="headerlink" href="#file-actions-menu" title="Link to this heading"></a></h1>
+<p>FileActionsMenu is a simple API for registering entry to the file actions menu for ExApps.
+AppAPI takes responsibility to register FileActionsMenu, ExApps needs only to register it in AppAPI.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FileActionsMenu rendered only for enabled ExApps.</p>
+</div>
+<section id="register">
+<h2>Register<a class="headerlink" href="#register" title="Link to this heading"></a></h2>
+<p>OCS endpoint: <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/apps/app_api/api/v1/ui/files-actions-menu</span></code></p>
+<section id="params">
+<h3>Params<a class="headerlink" href="#params" title="Link to this heading"></a></h3>
+<p>Complete list of params (including optional):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_name_of_file_actions_menu&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Display name (for UI listing)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;actionHandler&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;/action_handler_route&quot;</span>
+<span class="w">        </span><span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mime of files where to display action menu&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;img/icon.svg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;permissions&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order_in_file_actions_menu&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Urls <code class="docutils literal notranslate"><span class="pre">icon</span></code> and <code class="docutils literal notranslate"><span class="pre">actionHandler</span></code> are relative to the ExApp root, starting slash is not required.</p>
+</div>
+</section>
+<section id="optional-params">
+<h3>Optional params<a class="headerlink" href="#optional-params" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>permissions</cite> - File permissions required to display action menu, default: <strong>31</strong> (all permissions)</p></li>
+<li><p><cite>order</cite> - Order in file actions menu, default: <strong>0</strong></p></li>
+<li><p><cite>icon</cite> - Url to icon, default: <strong>null</strong></p></li>
+<li><p><cite>mime</cite> - One mime or mimes separated by commas, default: <strong>file</strong></p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="unregister">
+<h2>Unregister<a class="headerlink" href="#unregister" title="Link to this heading"></a></h2>
+<p>OCS endpoint: <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/apps/app_api/api/v1/ui/files-actions-menu</span></code></p>
+<section id="id1">
+<h3>Params<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>To unregister FileActionsMenu, you just need to provide name of registered FileActionsMenu:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_name_of_file_action_menu&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="action-payload-to-exapp">
+<h2>Action payload to ExApp<a class="headerlink" href="#action-payload-to-exapp" title="Link to this heading"></a></h2>
+<p>When FileActionsMenu invoked, AppAPI forwards action for handling to ExApp.
+The following data is sent to ExApp FileActionsMenu handler from the context of action:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;fileId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filename&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;relative/to/user/path/to/directory&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;etag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_etag&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_full_mime&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fileType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dir/file&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mtime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;last modify time(integer)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;favorite&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nc_favorite_flag&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_permissions_for_owner&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;shareOwner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, str&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;shareOwnerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, str&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;shareTypes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;shareAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sharePermissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instanceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="request-flow">
+<h2>Request flow<a class="headerlink" href="#request-flow" title="Link to this heading"></a></h2>
+<p>General workflow of ExApp based on FileActionsMenu.</p>
+<section id="user-action">
+<h3>User action<a class="headerlink" href="#user-action" title="Link to this heading"></a></h3>
+<div class="mermaid">
+            sequenceDiagram
+        User-&gt;&gt;FileActionMenu: Press on registered ExApp action
+        FileActionMenu-&gt;&gt;AppAPI: send action context payload
+        AppAPI-&gt;&gt;ExApp: forward request to handler
+        ExApp-&gt;&gt;AppAPI: handler accepted action status
+        AppAPI-&gt;&gt;User: Alert (action sent or error)
+        </div></section>
+<section id="action-results">
+<h3>Action results<a class="headerlink" href="#action-results" title="Link to this heading"></a></h3>
+<p>File processing results could be stored next to initial file or anywhere else,
+e.g. on configured location in ExApp settings (<code class="docutils literal notranslate"><span class="pre">appconfig_ex</span></code>) or ExApp user settings (<code class="docutils literal notranslate"><span class="pre">preferences_ex</span></code>).</p>
+<div class="mermaid">
+            sequenceDiagram
+        ExApp-&gt;&gt;Nextcloud: Upload result file
+        ExApp-&gt;&gt;AppAPI: Send notification about action results
+        </div></section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>Here is a list of simple example ExApps based on FileActionsMenu:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/cloud-py-api/nc_py_api/tree/main/examples/as_app/to_gif">video_to_gif</a> - ExApp based on FileActionsMenu to convert videos to gif in place</p></li>
+<li><p><a class="reference external" href="https://github.com/cloud-py-api/upscaler_example.git">upscaler_demo</a> - ExApp based on FileActionsMenu to upscale image in place</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utils.html" class="btn btn-neutral float-left" title="Miscellaneous OCS APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="topmenu.html" class="btn btn-neutral float-right" title="Top Menu Entry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Nextcloud GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
