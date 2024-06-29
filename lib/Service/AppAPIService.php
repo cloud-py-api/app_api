@@ -241,6 +241,9 @@ class AppAPIService {
 		if (!empty($auth)) {
 			$options['auth'] = $auth;
 		}
+		if (!isset($options['timeout'])) {
+			$options['timeout'] = '3.0';
+		}
 
 		if ((!array_key_exists('multipart', $options)) && (count($params)) > 0) {
 			if ($method === 'GET') {
