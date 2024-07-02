@@ -145,5 +145,10 @@ return [
 		['name' => 'Translation#unregisterProvider', 'url' => '/api/v1/ai_provider/translation', 'verb' => 'DELETE'],
 		['name' => 'Translation#getProvider', 'url' => '/api/v1/ai_provider/translation', 'verb' => 'GET'],
 		['name' => 'Translation#reportResult', 'url' => '/api/v1/ai_provider/translation', 'verb' => 'PUT'],
+
+		// Task-Processing
+		['name' => 'taskProcessing#registerProvider', 'url' => '/api/v1/ai_provider/task_processing', 'verb' => 'POST'],
+		['name' => 'taskProcessing#unregisterProvider', 'url' => '/api/v1/ai_provider/task_processing', 'verb' => 'DELETE'],
+		['name' => 'taskProcessing#getProvider', 'url' => '/api/v1/ai_provider/task_processing', 'verb' => 'GET'],
 	],
 ];

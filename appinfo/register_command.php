@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
+use OCA\AppAPI\Db\Console\ExAppOccCommand;
+use OCA\AppAPI\Service\ExAppOccService;
+use OCP\IConfig;
+use OCP\Server;
+
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Console\Application as SymfonyApplication;
-
-use OCP\Server;
-use OCP\IConfig;
-use OCA\AppAPI\Service\ExAppOccService;
-use OCA\AppAPI\Db\Console\ExAppOccCommand;
 
 try {
 	$config = Server::get(IConfig::class);

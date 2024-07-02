@@ -10,6 +10,7 @@ use OCA\AppAPI\Db\ExAppMapper;
 use OCA\AppAPI\Fetcher\ExAppArchiveFetcher;
 use OCA\AppAPI\Fetcher\ExAppFetcher;
 use OCA\AppAPI\Service\ProvidersAI\SpeechToTextService;
+use OCA\AppAPI\Service\ProvidersAI\TaskProcessingService;
 use OCA\AppAPI\Service\ProvidersAI\TextProcessingService;
 use OCA\AppAPI\Service\ProvidersAI\TranslationService;
 use OCA\AppAPI\Service\UI\FilesActionsMenuService;
@@ -48,6 +49,7 @@ class ExAppService {
 		private readonly SpeechToTextService        $speechToTextService,
 		private readonly TextProcessingService      $textProcessingService,
 		private readonly TranslationService         $translationService,
+		private readonly TaskProcessingService      $taskProcessingService,
 		private readonly TalkBotsService            $talkBotsService,
 		private readonly SettingsService            $settingsService,
 		private readonly ExAppEventsListenerService $eventsListenerService,
@@ -106,6 +108,7 @@ class ExAppService {
 		$this->speechToTextService->unregisterExAppSpeechToTextProviders($appId);
 		$this->textProcessingService->unregisterExAppTextProcessingProviders($appId);
 		$this->translationService->unregisterExAppTranslationProviders($appId);
+		$this->taskProcessingService->unregisterExAppTaskProcessingProviders($appId);
 		$this->settingsService->unregisterExAppForms($appId);
 		$this->exAppArchiveFetcher->removeExAppFolder($appId);
 		$this->eventsListenerService->unregisterExAppEventListeners($appId);

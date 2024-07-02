@@ -21,6 +21,7 @@ use OCA\AppAPI\Notifications\ExAppNotifier;
 use OCA\AppAPI\Profiler\AppAPIDataCollector;
 use OCA\AppAPI\PublicCapabilities;
 use OCA\AppAPI\Service\ProvidersAI\SpeechToTextService;
+use OCA\AppAPI\Service\ProvidersAI\TaskProcessingService;
 use OCA\AppAPI\Service\ProvidersAI\TextProcessingService;
 use OCA\AppAPI\Service\ProvidersAI\TranslationService;
 use OCA\AppAPI\Service\UI\TopMenuService;
@@ -96,6 +97,10 @@ class Application extends App implements IBootstrap {
 			/** @var TranslationService $translationService */
 			$translationService = $container->get(TranslationService::class);
 			$translationService->registerExAppTranslationProviders($context, $container->getServer());
+
+			/** @var TaskProcessingService $taskProcessingService */
+			$taskProcessingService = $container->get(TaskProcessingService::class);
+			$taskProcessingService->registerExAppTaskProcessingProviders($context, $container->getServer());
 		} catch (NotFoundExceptionInterface|ContainerExceptionInterface) {
 		}
 		$context->registerEventListener(NodeCreatedEvent::class, FileEventsListener::class);

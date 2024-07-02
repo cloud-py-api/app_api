@@ -25,7 +25,7 @@ class ExAppMapper extends QBMapper {
 	 *
 	 * @return ExApp[]
 	 */
-	public function findAll(int $limit = null, int $offset = null): array {
+	public function findAll(?int $limit = null, ?int $offset = null): array {
 		$qb = $this->db->getQueryBuilder();
 		$qb->select(
 			'a.*',

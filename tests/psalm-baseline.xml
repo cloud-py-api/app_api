@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
+<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
   <file src="lib/AppInfo/Application.php">
     <InvalidArgument>
-      <code>LoadFilesPluginListener::class</code>
-      <code>SabrePluginAuthInitListener::class</code>
-      <code>UserDeletedListener::class</code>
+      <code><![CDATA[LoadFilesPluginListener::class]]></code>
+      <code><![CDATA[SabrePluginAuthInitListener::class]]></code>
     </InvalidArgument>
     <MissingDependency>
-      <code>DavPlugin</code>
+      <code><![CDATA[DavPlugin]]></code>
     </MissingDependency>
   </file>
   <file src="lib/Controller/ExAppProxyController.php">
@@ -26,28 +25,28 @@
   <file src="lib/Controller/ExAppsPageController.php">
     <UndefinedClass>
       <code><![CDATA[$this->categoryFetcher]]></code>
-      <code>CategoryFetcher</code>
-      <code>CategoryFetcher</code>
-      <code>DependencyAnalyzer</code>
-      <code>OC_App</code>
-      <code>Platform</code>
-      <code>VersionParser</code>
+      <code><![CDATA[CategoryFetcher]]></code>
+      <code><![CDATA[CategoryFetcher]]></code>
+      <code><![CDATA[DependencyAnalyzer]]></code>
+      <code><![CDATA[OC_App]]></code>
+      <code><![CDATA[Platform]]></code>
+      <code><![CDATA[VersionParser]]></code>
     </UndefinedClass>
   </file>
   <file src="lib/Fetcher/AppAPIFetcher.php">
     <InvalidThrow>
-      <code>throw $e;</code>
+      <code><![CDATA[throw $e;]]></code>
     </InvalidThrow>
     <TooManyArguments>
-      <code>fetch</code>
+      <code><![CDATA[fetch]]></code>
     </TooManyArguments>
     <UndefinedClass>
-      <code>$appDataFactory</code>
-      <code>$e</code>
-      <code>ConnectException</code>
-      <code>ConnectException</code>
-      <code>Factory</code>
-      <code>\OC_Util</code>
+      <code><![CDATA[$appDataFactory]]></code>
+      <code><![CDATA[$e]]></code>
+      <code><![CDATA[ConnectException]]></code>
+      <code><![CDATA[ConnectException]]></code>
+      <code><![CDATA[Factory]]></code>
+      <code><![CDATA[\OC_Util]]></code>
     </UndefinedClass>
   </file>
   <file src="lib/Fetcher/ExAppFetcher.php">
@@ -56,74 +55,59 @@
       <code><![CDATA[$this->compareVersion]]></code>
       <code><![CDATA[$this->compareVersion]]></code>
       <code><![CDATA[$this->compareVersion]]></code>
-      <code>$versionParser</code>
-      <code>$versionParser</code>
-      <code>CompareVersion</code>
-      <code>CompareVersion</code>
-      <code>Factory</code>
-      <code>VersionParser</code>
-    </UndefinedClass>
-  </file>
-  <file src="lib/Listener/DeclarativeSettings/GetValueListener.php">
-    <UndefinedClass>
-      <code>DeclarativeSettingsGetValueEvent</code>
-    </UndefinedClass>
-  </file>
-  <file src="lib/Listener/DeclarativeSettings/RegisterDeclarativeSettingsListener.php">
-    <UndefinedClass>
-      <code>DeclarativeSettingsRegisterFormEvent</code>
-    </UndefinedClass>
-  </file>
-  <file src="lib/Listener/DeclarativeSettings/SetValueListener.php">
-    <UndefinedClass>
-      <code>DeclarativeSettingsSetValueEvent</code>
+      <code><![CDATA[$versionParser]]></code>
+      <code><![CDATA[$versionParser]]></code>
+      <code><![CDATA[CompareVersion]]></code>
+      <code><![CDATA[CompareVersion]]></code>
+      <code><![CDATA[Factory]]></code>
+      <code><![CDATA[VersionParser]]></code>
     </UndefinedClass>
   </file>
   <file src="lib/Listener/FileEventsListener.php">
     <MissingDependency>
       <code><![CDATA[$this->rootFolder]]></code>
       <code><![CDATA[$this->rootFolder]]></code>
-      <code>private</code>
+      <code><![CDATA[private]]></code>
     </MissingDependency>
   </file>
   <file src="lib/Listener/LoadFilesPluginListener.php">
     <ImplementedParamTypeMismatch>
-      <code>$event</code>
+      <code><![CDATA[$event]]></code>
     </ImplementedParamTypeMismatch>
     <InvalidDocblock>
-      <code>class LoadFilesPluginListener implements IEventListener {</code>
+      <code><![CDATA[class LoadFilesPluginListener implements IEventListener {]]></code>
     </InvalidDocblock>
     <InvalidTemplateParam>
-      <code>IEventListener</code>
+      <code><![CDATA[IEventListener]]></code>
     </InvalidTemplateParam>
     <MissingTemplateParam>
-      <code>IEventListener</code>
+      <code><![CDATA[IEventListener]]></code>
     </MissingTemplateParam>
     <UndefinedClass>
-      <code>LoadAdditionalScriptsEvent</code>
+      <code><![CDATA[LoadAdditionalScriptsEvent]]></code>
     </UndefinedClass>
   </file>
   <file src="lib/Listener/SabrePluginAuthInitListener.php">
     <ImplementedParamTypeMismatch>
-      <code>$event</code>
+      <code><![CDATA[$event]]></code>
     </ImplementedParamTypeMismatch>
     <InvalidDocblock>
-      <code>class SabrePluginAuthInitListener implements IEventListener {</code>
+      <code><![CDATA[class SabrePluginAuthInitListener implements IEventListener {]]></code>
     </InvalidDocblock>
     <InvalidTemplateParam>
-      <code>IEventListener</code>
+      <code><![CDATA[IEventListener]]></code>
     </InvalidTemplateParam>
     <MissingDependency>
-      <code>AppAPIAuthBackend</code>
-      <code>AppAPIAuthBackend</code>
+      <code><![CDATA[AppAPIAuthBackend]]></code>
+      <code><![CDATA[AppAPIAuthBackend]]></code>
     </MissingDependency>
     <MissingTemplateParam>
-      <code>IEventListener</code>
+      <code><![CDATA[IEventListener]]></code>
     </MissingTemplateParam>
   </file>
   <file src="lib/Profiler/AppAPIDataCollector.php">
     <UndefinedClass>
-      <code>Request</code>
+      <code><![CDATA[Request]]></code>
     </UndefinedClass>
   </file>
 </files>

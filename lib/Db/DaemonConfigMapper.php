@@ -22,7 +22,7 @@ class DaemonConfigMapper extends QBMapper {
 	/**
 	 * @throws Exception
 	 */
-	public function findAll(int $limit = null, int $offset = null): array {
+	public function findAll(?int $limit = null, ?int $offset = null): array {
 		$qb = $this->db->getQueryBuilder();
 		$qb->select('*')
 			->from($this->tableName)

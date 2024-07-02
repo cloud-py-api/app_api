@@ -54,6 +54,7 @@ class ExAppApiScopeService {
 			['api_route' => '/apps/notifications/api/', 'scope_group' => 32, 'name' => 'NOTIFICATIONS', 'user_check' => 1],
 			['api_route' => '/apps/weather_status/api/', 'scope_group' => 33, 'name' => 'WEATHER_STATUS', 'user_check' => 1],
 			['api_route' => '/apps/spreed/api/', 'scope_group' => 50, 'name' => 'TALK', 'user_check' => 1],
+			['api_route' => '/taskprocessing/', 'scope_group' => 61, 'name' => 'AI_PROVIDERS', 'user_check' => 0],
 			['api_route' => '/apps/activity/api/', 'scope_group' => 110, 'name' => 'ACTIVITIES', 'user_check' => 1],
 			['api_route' => '/apps/notes/api/', 'scope_group' => 120, 'name' => 'NOTES', 'user_check' => 1],
 			['api_route' => '/textprocessing/', 'scope_group' => 200, 'name' => 'TEXT_PROCESSING', 'user_check' => 1],
@@ -77,7 +78,7 @@ class ExAppApiScopeService {
 	 * Check if the given route has ocs prefix and cut it off
 	 */
 	private function sanitizeOcsRoute(string $route): string {
-		if (preg_match("/\/ocs\/v(1|2)\.php/", $route, $matches)) {
+		if (preg_match("/\/ocs\/v([12])\.php/", $route, $matches)) {
 			return str_replace($matches[0], '', $route);
 		}
 		return $route;
