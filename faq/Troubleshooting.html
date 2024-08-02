@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troubleshooting &mdash; AppAPI latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=92f2225a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/dark.css?v=41caee7b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/light.css?v=c3d70dd7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/tabs.js?v=3ee01567"></script>
+        <script src="../_static/js/script.js?v=783f4f19"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Scaling" href="Scaling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AppAPI
+              <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DeployConfigurations.html">Deployment configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CreationOfDeployDaemon.html">Creation of Deploy Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TestDeploy.html">Test Deploy Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingExternalApplications.html">Managing External Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tech_details/index.html">Technical details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes_for_developers/index.html">Notes for Developers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DockerContainerRegistry.html">Docker Container Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DockerSocketProxy.html">Docker Socket Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GpuSupport.html">GPU support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scaling.html">Scaling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-troubleshoot-networking-issues">How to troubleshoot networking issues?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exapp-deployment-issues">ExApp deployment issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#failed-to-create-volume">Failed to create volume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exapps-management-list-of-apps-from-appstore-is-empty">ExApps management list of apps from AppStore is empty</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AppAPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Frequently Asked Questions</a></li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/faq/Troubleshooting.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
+<p>This section describes common steps to troubleshoot specific issues.</p>
+<section id="how-to-troubleshoot-networking-issues">
+<h2>How to troubleshoot networking issues?<a class="headerlink" href="#how-to-troubleshoot-networking-issues" title="Link to this heading"></a></h2>
+<p>Networking issues can be not so straightforward to identify and resolve.
+Here are some common steps to verify the network configuration:</p>
+<ul class="simple">
+<li><p>Verify that the Deploy daemon is running and accessible (AppAPI admin settings - Select Deploy daemon - Check connection).</p></li>
+<li><p>Verify the network mode and access levels, firewall, vpn, etc.</p></li>
+<li><p>Verify that Nextcloud is reachable from the Deploy daemon host</p></li>
+<li><p>Verify that the Deploy daemon host is reachable from the Nextcloud host</p></li>
+<li><p>Verify that Nextcloud is reachable from the ExApp container</p></li>
+<li><p>Verify if there is no DNS resolution issues</p></li>
+<li><p>Verify is there is no SSL certificate issues</p></li>
+<li><p>If there are HTTP 401 Unauthorized errors, check the ExApp (<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">nc_app_&lt;appid&gt;</span></code>) / Nextcloud logs, on which API route it fails to authenticate, try to re-enable AppAPI and re-install the ExApp.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your case is not documented here, or doesn’t exists on GitHub issues,
+please feel free to ask it by creating an issue in the <a class="reference external" href="https://github.com/cloud-py-api/app_api/issues">AppAPI repository</a>.</p>
+</div>
+</section>
+<section id="exapp-deployment-issues">
+<h2>ExApp deployment issues<a class="headerlink" href="#exapp-deployment-issues" title="Link to this heading"></a></h2>
+<p>The deployment issues questions are covered in the <a class="reference internal" href="../TestDeploy.html#test-deploy"><span class="std std-ref">Test Deploy</span></a> section.
+Generally speaking, there are three steps to find the proper error message to understand the problem:</p>
+<ol class="arabic simple">
+<li><p>Check Nextcloud logs</p></li>
+<li><p>Check ExApp container logs (available only if ExApp container is created and/or running)</p></li>
+<li><p>Check Deploy daemon host logs (<code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">docker.service</span></code>)</p></li>
+<li><p>Check Docker Socket Proxy logs (if used, and if needed, e.g. for SSL or 401 errors check)</p></li>
+</ol>
+</section>
+<section id="failed-to-create-volume">
+<h2>Failed to create volume<a class="headerlink" href="#failed-to-create-volume" title="Link to this heading"></a></h2>
+<p>If you encounter “Failed to create volume” error, please check the following:</p>
+<ul class="simple">
+<li><p>Make sure that there is enough disk space on the host machine.</p></li>
+<li><p>Check the Docker system logs while reproducing the issue (<code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">docker.service</span></code>).</p></li>
+</ul>
+</section>
+<section id="exapps-management-list-of-apps-from-appstore-is-empty">
+<h2>ExApps management list of apps from AppStore is empty<a class="headerlink" href="#exapps-management-list-of-apps-from-appstore-is-empty" title="Link to this heading"></a></h2>
+<p>This issue may occur if you are loading the ExApps management (or regular Apps management) page
+frequently during the short period of time and therefore your IP can be blocked by the AppStore rate-limits protection.
+Please, wait for a while and try again.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Scaling.html" class="btn btn-neutral float-left" title="Scaling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Nextcloud GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

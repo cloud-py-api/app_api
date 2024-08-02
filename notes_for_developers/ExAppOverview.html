@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExApp overview &mdash; AppAPI latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/styles.css?v=92f2225a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/dark.css?v=41caee7b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/light.css?v=c3d70dd7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/tabs.js?v=3ee01567"></script>
+        <script src="../_static/js/script.js?v=783f4f19"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ExApp lifecycle" href="ExAppLifecycle.html" />
+    <link rel="prev" title="ExApp development" href="ExAppDevelopmentSteps.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AppAPI
+              <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DeployConfigurations.html">Deployment configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CreationOfDeployDaemon.html">Creation of Deploy Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TestDeploy.html">Test Deploy Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingExternalApplications.html">Managing External Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tech_details/index.html">Technical details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Notes for Developers</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentEnvironment.html">Development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ExAppDevelopmentSteps.html">ExApp development</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ExApp overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exapp-structure">ExApp structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exapp-metadata">ExApp metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#backend">Backend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#persistent-storage">Persistent storage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#frontend-routing">Frontend routing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#l10n-translations">L10n translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#makefile">Makefile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ExAppLifecycle.html">ExApp lifecycle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AppAPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Notes for Developers</a></li>
+      <li class="breadcrumb-item active">ExApp overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notes_for_developers/ExAppOverview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exapp-overview">
+<span id="exappoverview"></span><h1>ExApp overview<a class="headerlink" href="#exapp-overview" title="Link to this heading"></a></h1>
+<p>Basic concept of the AppAPI is to provide a way to develop an app for Nextcloud using any language.
+In this way, the ExApp can be written in any language, in particular, the backend part.
+Frontend is kept the same. You can think about ExApp as a microservice.</p>
+<section id="exapp-structure">
+<h2>ExApp structure<a class="headerlink" href="#exapp-structure" title="Link to this heading"></a></h2>
+<p>The typical ExApp folder structure is the following:</p>
+<ul class="simple">
+<li><p><strong>appinfo/</strong>: contains the ExApp metadata, which is based on the regular <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/app_development/info.html">Nextcloud PHP appinfo</a>,
+but with additional new fields under the <code class="docutils literal notranslate"><span class="pre">external-app</span></code> key.</p></li>
+<li><dl class="simple">
+<dt><strong>ex_app/</strong>: the ExApp specific folder, which contains the ExApp frontend and backend parts.</dt><dd><ul>
+<li><p><strong>lib/</strong>: contains the ExApp backend part, which can be written in any language.</p></li>
+<li><p><strong>src/</strong>: contains the ExApp frontend part, which is a regular Nextcloud Vue.js application, with small adjustments to the script loading paths (see <a class="reference internal" href="#ex-app-specific-frontend-changes"><span class="std std-ref">ExApp specific frontend changes</span></a>).</p></li>
+<li><p><strong>img/</strong>: contains the ExApp images.</p></li>
+<li><p><strong>css/</strong>: contains the ExApp CSS files.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>l10n</strong>: contains the <a class="reference internal" href="#ex-app-translations"><span class="std std-ref">ExApp translations</span></a>.</p></li>
+<li><p><strong>translationfiles</strong>: contains the source translation (<code class="docutils literal notranslate"><span class="pre">.po</span></code>, <code class="docutils literal notranslate"><span class="pre">.mo</span></code>) files for the ExApp.</p></li>
+<li><p><strong>other folders or files</strong>: depends on your case, e.g. screenshots, scripts, etc.</p></li>
+</ul>
+<section id="exapp-metadata">
+<span id="ex-app-info-xml-metadata"></span><h3>ExApp metadata<a class="headerlink" href="#exapp-metadata" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;external-app&gt;</span></code> info.xml tag is required for the ExApp metadata.
+It should contain the following fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">external</span><span class="o">-</span><span class="n">app</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">docker</span><span class="o">-</span><span class="n">install</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">registry</span><span class="o">&gt;</span><span class="n">ghcr</span><span class="o">.</span><span class="n">io</span><span class="o">&lt;/</span><span class="n">registry</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">image</span><span class="o">&gt;</span><span class="n">cloud</span><span class="o">-</span><span class="n">py</span><span class="o">-</span><span class="n">api</span><span class="o">/</span><span class="n">skeleton</span><span class="o">&lt;/</span><span class="n">image</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">image</span><span class="o">-</span><span class="n">tag</span><span class="o">&gt;</span><span class="n">latest</span><span class="o">&lt;/</span><span class="n">image</span><span class="o">-</span><span class="n">tag</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">docker</span><span class="o">-</span><span class="n">install</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">scopes</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="n">FILES</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="n">AI_PROVIDERS</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+                <span class="o">...</span>
+        <span class="o">&lt;/</span><span class="n">scopes</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">system</span><span class="o">&gt;</span><span class="n">false</span><span class="o">&lt;/</span><span class="n">system</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">deprecated</span> <span class="n">since</span> <span class="n">AppAPI</span> <span class="mf">3.0.0</span>
+<span class="o">&lt;/</span><span class="n">external</span><span class="o">-</span><span class="n">app</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>docker-install</strong>: contains the Docker image information for the ExApp.</dt><dd><ul>
+<li><p><strong>registry</strong>: the Docker registry where the image is stored.</p></li>
+<li><p><strong>image</strong>: the Docker image name.</p></li>
+<li><p><strong>image-tag</strong>: the Docker image tag (version tag).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>scopes</strong>: the list of the Nextcloud scopes that the ExApp requires (see <a class="reference internal" href="../tech_details/ApiScopes.html#api-scopes"><span class="std std-ref">list of scopes</span></a>).</p></li>
+<li><p><strong>system</strong>: (deprecated since AppAPI 3.0.0) a boolean value that indicates whether the ExApp is a system app or not.</p></li>
+</ul>
+</section>
+</section>
+<section id="backend">
+<h2>Backend<a class="headerlink" href="#backend" title="Link to this heading"></a></h2>
+<p>The ExApp backend part can be implemented in any language and framework you want,
+the only requirement here is to follow the microservice architecture and ExApp &lt;-&gt; Nextcloud <a class="reference internal" href="ExAppLifecycle.html#ex-app-lifecycle-methods"><span class="std std-ref">communication flow</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a limitation of AppAPI ExApp proxy - the websocket connections are not supported.</p>
+</div>
+<p>Each ExApp container have the environment variables set by AppAPI, you can find more about it <a class="reference internal" href="../tech_details/Deployment.html#ex-app-env-vars"><span class="std std-ref">here</span></a>.</p>
+<section id="persistent-storage">
+<h3>Persistent storage<a class="headerlink" href="#persistent-storage" title="Link to this heading"></a></h3>
+<p>For each ExApp, AppAPI creates a Docker volume (<code class="docutils literal notranslate"><span class="pre">nc_app_&lt;app_id&gt;_data</span></code>), that is attached to the ExApp container as a persistent storage.
+It is available inside container under the <code class="docutils literal notranslate"><span class="pre">/nc_app_&lt;app_id&gt;_data</span></code> path or via <code class="docutils literal notranslate"><span class="pre">APP_PERSISTENT_STORAGE</span></code> env passed by AppAPI.</p>
+</section>
+</section>
+<section id="frontend">
+<span id="ex-app-specific-frontend-changes"></span><h2>Frontend<a class="headerlink" href="#frontend" title="Link to this heading"></a></h2>
+<p>The ExApp frontend part is loaded only for <a class="reference internal" href="../tech_details/api/topmenu.html#top-menu-section"><span class="std std-ref">TopMenu entry</span></a>.
+It is a regular Nextcloud Vue.js application with a small routing adjustment to the paths,
+as they are being loaded via AppAPI proxy from the ExApp server.</p>
+<p>To simplify the usage, we declare a few constants:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">const</span> <span class="n">EX_APP_ID</span> <span class="o">=</span> <span class="s1">&#39;ui_example&#39;</span>
+<span class="n">export</span> <span class="n">const</span> <span class="n">EX_APP_MENU_ENTRY_NAME</span> <span class="o">=</span> <span class="s1">&#39;first_menu&#39;</span>
+<span class="n">export</span> <span class="n">const</span> <span class="n">APP_API_PROXY_URL_PREFIX</span> <span class="o">=</span> <span class="s1">&#39;/apps/app_api/proxy&#39;</span>
+<span class="n">export</span> <span class="n">const</span> <span class="n">APP_API_ROUTER_BASE</span> <span class="o">=</span> <span class="s1">&#39;/apps/app_api/embedded&#39;</span>
+</pre></div>
+</div>
+<p>The bootstrap of the Vue app (<a class="reference external" href="https://github.com/cloud-py-api/ui_example/blob/main/src/bootstrap.js">UI Example boostrap</a>) is changes as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import Vue from &#39;vue&#39;
+import { translate, translatePlural } from &#39;@nextcloud/l10n&#39;
+import { generateUrl } from &#39;@nextcloud/router&#39;
+import { APP_API_PROXY_URL_PREFIX, EX_APP_ID } from &#39;./constants/AppAPI.js&#39;
+import { getRequestToken } from &#39;@nextcloud/auth&#39;
+
+Vue.prototype.t = translate
+Vue.prototype.n = translatePlural
+Vue.prototype.OC = window.OC
+Vue.prototype.OCA = window.OCA
+
+__webpack_public_path__ = generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/js/`) // eslint-disable-line
+__webpack_nonce__ = btoa(getRequestToken()) // eslint-disable-line
+</pre></div>
+</div>
+<section id="frontend-routing">
+<h3>Frontend routing<a class="headerlink" href="#frontend-routing" title="Link to this heading"></a></h3>
+<p>The frontend routing base URL is also adjusted to be loaded via AppAPI proxy.
+For example, the vuex router has the following base URL configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
+const router = new VueRouter({
+        mode: &#39;history&#39;,
+        base: generateUrl(`${APP_API_ROUTER_BASE}/${EX_APP_ID}/${EX_APP_MENU_ENTRY_NAME}`, &#39;&#39;), // setting base to AppAPI embedded URL
+        linkActiveClass: &#39;active&#39;,
+...
+</pre></div>
+</div>
+<p>The same applies to the frontend API requests to the ExApp backend API:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
+axios.get(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/some_api_endpoint`))
+...
+</pre></div>
+</div>
+</section>
+</section>
+<section id="l10n-translations">
+<span id="ex-app-translations"></span><h2>L10n translations<a class="headerlink" href="#l10n-translations" title="Link to this heading"></a></h2>
+<p>Currently, only <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/basics/front-end/l10n.html#manual-translation">manual translations</a> are supported.
+To add support of your programming language from translations string extraction using Nextcloud translation tool,
+you just need to add your file extensions to it <a class="reference external" href="https://github.com/nextcloud/docker-ci/blob/master/translations/translationtool/src/translationtool.php#L69">in createPotFile</a>
+and down below adjust the <code class="docutils literal notranslate"><span class="pre">--language</span></code> and <code class="docutils literal notranslate"><span class="pre">keyword</span></code> parameters.
+Our examples using translationtool adjusted in the same way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>diff --git a/translations/translationtool/src/translationtool.php b/translations/translationtool/src/translationtool.php
+index 42513563..8aa06618 100644
+--- a/translations/translationtool/src/translationtool.php
++++ b/translations/translationtool/src/translationtool.php
+@@ -67,7 +67,7 @@ public function createPotFile() {
+            $this-&gt;createFakeFileForVueFiles();
+            $this-&gt;createFakeFileForLocale();
+            $translatableFiles = $this-&gt;findTranslatableFiles(
+-                   [&#39;.php&#39;, &#39;.js&#39;, &#39;.jsx&#39;, &#39;.mjs&#39;, &#39;.html&#39;, &#39;.ts&#39;, &#39;.tsx&#39;],
++                   [&#39;.php&#39;, &#39;.js&#39;, &#39;.jsx&#39;, &#39;.mjs&#39;, &#39;.html&#39;, &#39;.ts&#39;, &#39;.tsx&#39;, &#39;.py&#39;],
+                    [&#39;.min.js&#39;]
+            );
+
+@@ -79,6 +79,8 @@ public function createPotFile() {
+                    $keywords = &#39;&#39;;
+                    if (substr($entry, -4) === &#39;.php&#39;) {
+                            $keywords = &#39;--keyword=t --keyword=n:1,2&#39;;
++                   } else if (substr($entry, -3) === &#39;.py&#39;) {
++                           $keywords = &#39;--keyword=_ --keyword=_n:1,2&#39;;
+                    } else {
+                            $keywords = &#39;--keyword=t:2 --keyword=n:2,3&#39;;
+                    }
+@@ -86,6 +88,8 @@ public function createPotFile() {
+                    $language = &#39;--language=&#39;;
+                    if (substr($entry, -4) === &#39;.php&#39;) {
+                            $language .= &#39;PHP&#39;;
++                   } else if (substr($entry, -3) === &#39;.py&#39;) {
++                           $language .= &#39;Python&#39;;
+                    } else {
+                            $language .= &#39;Javascript&#39;;
+                    }
+</pre></div>
+</div>
+<p>where we declaring the methods used in source code for translating strings.</p>
+<p>The ExApp translations are stored in the <code class="docutils literal notranslate"><span class="pre">l10n</span></code> folder in the ExApp root folder.
+For Nextcloud side it still has to contain the files as for regular Nextcloud apps (.js and .json).
+There ExApp translation files are copied to the Nextcloud server during installation (removed on uninstall),
+and can be used to translate ExApp string on backend or frontend parts the same way as for PHP apps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the clustered Nextcloud setup, the ExApp translations must be also copied to the other Nextcloud instances,
+if the apps folder is not shared between the instances.
+It is done automatically only for the instance, where the installation is performed.</p>
+</div>
+<p>You might need to convert the translation files to the format that is used in your language.
+And this can be done with simple bash script, as <a class="reference external" href="https://github.com/cloud-py-api/ui_example/blob/main/scripts/convert_to_locale.sh">in our example for Python</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+# This script is used to transform default translation files folders (translationfiles/&lt;lang&gt;/*.(po|mo))
+# to the locale folder (locale/&lt;lang&gt;/LC_MESSAGES/*.(po|mo))
+
+cd ..
+
+# Remove the locale/* if it exists to cleanup the old translations
+if [ -d &quot;locale&quot; ]; then
+  rm -rf locale/*
+fi
+
+# Create the locale folder if it doesn&#39;t exist
+if [ ! -d &quot;locale&quot; ]; then
+  mkdir locale
+fi
+
+# Loop through the translation folders and copy the files to the locale folder
+# Skip the templates folder
+
+for lang in translationfiles/*; do
+  if [ -d &quot;$lang&quot; ]; then
+        lang=$(basename $lang)
+        if [ &quot;$lang&quot; != &quot;templates&quot; ]; then
+          if [ ! -d &quot;locale/$lang/LC_MESSAGES&quot; ]; then
+                mkdir -p locale/$lang/LC_MESSAGES
+          fi
+          # Echo the language being copied
+          echo &quot;Copying $lang locale&quot;
+          cp translationfiles/$lang/*.po locale/$lang/LC_MESSAGES/
+          cp translationfiles/$lang/*.mo locale/$lang/LC_MESSAGES/
+        fi
+  fi
+done
+</pre></div>
+</div>
+</section>
+<section id="makefile">
+<h2>Makefile<a class="headerlink" href="#makefile" title="Link to this heading"></a></h2>
+<p>It is recommended to follow our Makefile example with the default set of commands:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Makefile is written to work in the <a class="reference external" href="https://github.com/juliushaertl/nextcloud-docker-dev">nextcloud-docker-dev</a> dev setup.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code>: shows the list of available commands.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build-push-cpu</span></code>: builds the Docker image for CPU and uploads it to the Docker registry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build-push-cuda</span></code>: builds the Docker image for CUDA and uploads it to the Docker registry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build-push-rocm</span></code>: builds the Docker image for ROCm and uploads it to the Docker registry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run</span></code>: installs the ExApp for Nextcloud latest via the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app_api:app:register</span></code> command, like from UI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">register</span></code>: performs registration of running manually ExApp using the <code class="docutils literal notranslate"><span class="pre">manual_install</span></code> Deploy daemon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">translation_templates</span></code>: execute translationtool.phar to extract translation strings from sources (frontend and backend).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">convert_translations_nc</span></code>: converts translations to Nextcloud format files (json, js).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">convert_to_locale</span></code>: copies translations to the common locale/&lt;lang&gt;/LC_MESSAGES/&lt;appid&gt;.(po|mo). Depending on the language, you might need to adjust the script.</p></li>
+</ul>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<p>Here is an example of regular ExApp Makefile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.DEFAULT_GOAL := help
+
+.PHONY: help
+help:
+        @echo &quot;Welcome to Nextcloud Visionatrix. Please use \`make &lt;target&gt;\` where &lt;target&gt; is one of&quot;
+        @echo &quot; &quot;
+        @echo &quot;  Next commands are only for dev environment with nextcloud-docker-dev!&quot;
+        @echo &quot;  They should run from the host you are developing on(with activated venv) and not in the container with Nextcloud!&quot;
+        @echo &quot;  &quot;
+        @echo &quot;  build-push-cpu    build image for CPU and upload to ghcr.io&quot;
+        @echo &quot;  build-push-cuda   build image for CUDA and upload to ghcr.io&quot;
+        @echo &quot;  build-push-rocm   build image for ROCm and upload to ghcr.io&quot;
+        @echo &quot;  &quot;
+        @echo &quot;  run               install Visionatrix for Nextcloud Last&quot;
+        @echo &quot;  &quot;
+        @echo &quot;  For development of this example use PyCharm run configurations. Development is always set for last Nextcloud.&quot;
+        @echo &quot;  First run original &#39;Visionatrix&#39;, then run this Visionatrix and then &#39;make registerXX&#39;, after that you can use/debug/develop it and easy test.&quot;
+        @echo &quot;  Do not forget to change paths in &#39;proxy_requests&#39; function to point to correct files for the frontend&quot;
+        @echo &quot;  &quot;
+        @echo &quot;  register          perform registration of running Visionatrix-es into the &#39;manual_install&#39; deploy daemon.&quot;
+        @echo &quot;  &quot;
+        @echo &quot;  L10N (for manual translation):&quot;
+        @echo &quot;  translation_templates      extract translation strings from sources&quot;
+        @echo &quot;  convert_translations_nc    convert translations to Nextcloud format files (json, js)&quot;
+        @echo &quot;  convert_to_locale              copy translations to the common locale/&lt;lang&gt;/LC_MESSAGES/&lt;appid&gt;.(po|mo)&quot;
+
+.PHONY: build-push-cpu
+build-push-cpu:
+        docker login ghcr.io
+        docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/cloud-py-api/visionatrix:$$(xmlstarlet sel -t -v &quot;//image-tag&quot; appinfo/info.xml) --build-arg BUILD_TYPE=cpu .
+
+.PHONY: build-push-cuda
+build-push-cuda:
+        docker login ghcr.io
+        docker buildx build --push --platform linux/amd64 --tag ghcr.io/cloud-py-api/visionatrix-cuda:$$(xmlstarlet sel -t -v &quot;//image-tag&quot; appinfo/info.xml) --build-arg BUILD_TYPE=cuda .
+
+.PHONY: build-push-rocm
+build-push-rocm:
+        docker login ghcr.io
+        docker buildx build --push --platform linux/amd64 --tag ghcr.io/cloud-py-api/visionatrix-rocm:$$(xmlstarlet sel -t -v &quot;//image-tag&quot; appinfo/info.xml) --build-arg BUILD_TYPE=rocm .
+
+.PHONY: run
+run:
+        docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister visionatrix --silent --force || true
+        docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register visionatrix --force-scopes \
+                --info-xml https://raw.githubusercontent.com/cloud-py-api/visionatrix/main/appinfo/info.xml
+
+.PHONY: register
+register:
+        docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister visionatrix --silent --force || true
+        docker exec master-nextcloud-1 rm -rf /tmp/vix_l10n &amp;&amp; docker cp l10n master-nextcloud-1:/tmp/vix_l10n
+        docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register visionatrix manual_install --json-info \
+  &quot;{\&quot;id\&quot;:\&quot;visionatrix\&quot;,\&quot;name\&quot;:\&quot;Visionatrix\&quot;,\&quot;daemon_config_name\&quot;:\&quot;manual_install\&quot;,\&quot;version\&quot;:\&quot;1.0.0\&quot;,\&quot;secret\&quot;:\&quot;12345\&quot;,\&quot;port\&quot;:9100,\&quot;scopes\&quot;:[\&quot;AI_PROVIDERS\&quot;, \&quot;FILES\&quot;, \&quot;USER_INFO\&quot;], \&quot;translations_folder\&quot;:\&quot;\/tmp\/vix_l10n\&quot;}&quot; \
+  --force-scopes --wait-finish
+
+.PHONY: translation_templates
+translation_templates:
+        ./translationtool.phar create-pot-files
+
+.PHONY: convert_translations_nc
+convert_translations_nc:
+        ./translationtool.phar convert-po-files
+
+.PHONY: convert_to_locale
+convert_to_locale:
+        ./scripts/convert_to_locale.sh
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ExAppDevelopmentSteps.html" class="btn btn-neutral float-left" title="ExApp development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ExAppLifecycle.html" class="btn btn-neutral float-right" title="ExApp lifecycle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Nextcloud GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

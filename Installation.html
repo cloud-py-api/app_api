@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; AppAPI latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="_static/css/styles.css?v=92f2225a" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dark.css?v=41caee7b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/light.css?v=c3d70dd7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/tabs.js?v=3ee01567"></script>
+        <script src="_static/js/script.js?v=783f4f19"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Deployment configurations" href="DeployConfigurations.html" />
+    <link rel="prev" title="AppAPI documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            AppAPI
+              <img src="_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-from-the-appstore">Installation from the AppStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-from-the-source-code">Installation from the source code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-appapi-repository-into-your-apps-directory">1. Clone the AppAPI repository into your apps directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-frontend-assets-in-production-mode">2. Build frontend assets in production mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-the-appapi">3. Enable the AppAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-deploy-daemon">4. Setup Deploy daemon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-daemon-configuration">4.1 Deploy daemon configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="DeployConfigurations.html">Deployment configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CreationOfDeployDaemon.html">Creation of Deploy Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TestDeploy.html">Test Deploy Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ManagingExternalApplications.html">Managing External Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech_details/index.html">Technical details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notes_for_developers/index.html">Notes for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AppAPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p>There are two ways to install the AppAPI: from the <a class="reference external" href="https://apps.nextcloud.com/apps/app_api">AppStore</a> or from the source code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AppAPI 3.0.0 is the last version supported Nextcloud 27.</p>
+</div>
+<section id="installation-from-the-appstore">
+<h2>Installation from the AppStore<a class="headerlink" href="#installation-from-the-appstore" title="Link to this heading"></a></h2>
+<p>Simply navigate to the Apps management page in your Nextcloud and setup the AppAPI from the Tools category.</p>
+</section>
+<section id="installation-from-the-source-code">
+<h2>Installation from the source code<a class="headerlink" href="#installation-from-the-source-code" title="Link to this heading"></a></h2>
+<p>To install the AppAPI from the source code, follow these steps:</p>
+<section id="clone-the-appapi-repository-into-your-apps-directory">
+<h3>1. Clone the AppAPI repository into your apps directory<a class="headerlink" href="#clone-the-appapi-repository-into-your-apps-directory" title="Link to this heading"></a></h3>
+<p>Clone the latest main branch:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cloud-py-api/app_api.git
+</pre></div>
+</div>
+</div></blockquote>
+<p>or clone a specific version by specifying the version tag:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cloud-py-api/app_api.git<span class="w"> </span>--branch<span class="w"> </span>&lt;version-tag&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;version-tag&gt;</span></code> is the version you want to install.</p>
+</section>
+<section id="build-frontend-assets-in-production-mode">
+<h3>2. Build frontend assets in production mode<a class="headerlink" href="#build-frontend-assets-in-production-mode" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>ci<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="enable-the-appapi">
+<h3>3. Enable the AppAPI<a class="headerlink" href="#enable-the-appapi" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./occ<span class="w"> </span>app:enable<span class="w"> </span>--force<span class="w"> </span>app_api
+</pre></div>
+</div>
+</div></blockquote>
+<p>To install it in development mode, follow the instructions on this page: <a class="reference internal" href="DevSetup.html#dev-setup"><span class="std std-ref">Setting up dev environment</span></a>.</p>
+</section>
+</section>
+<section id="setup-deploy-daemon">
+<h2>4. Setup Deploy daemon<a class="headerlink" href="#setup-deploy-daemon" title="Link to this heading"></a></h2>
+<p>Upon the successful installation of the AppAPI, a one-time configuration is essential.
+Details on this configuration can be found in the subsequent section: <a class="reference internal" href="CreationOfDeployDaemon.html#create-deploy-daemon"><span class="std std-ref">Creation of Deploy Daemon</span></a>.</p>
+<section id="deploy-daemon-configuration">
+<h3>4.1 Deploy daemon configuration<a class="headerlink" href="#deploy-daemon-configuration" title="Link to this heading"></a></h3>
+<p>Deploy daemon configuration steps:</p>
+<ol class="arabic simple">
+<li><p>Go to the AppAPI admin settings.</p></li>
+<li><p>Click on the “Register Daemon” button.</p></li>
+<li><dl class="simple">
+<dt>Fill in the required fields:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: unique name of the Deploy daemon</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Display</span> <span class="pre">name</span></code>: the name that will be displayed in the UI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Deployment</span> <span class="pre">method</span></code>: by default you will need to choose <code class="docutils literal notranslate"><span class="pre">docker_install</span></code>, <code class="docutils literal notranslate"><span class="pre">manual_install</span></code> is for development or custom use case of manual ExApp installation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Daemon</span> <span class="pre">Host</span></code>: hostname/IP address + port of the Deploy daemon</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">URL</span></code>: autofilled with current domain, you might need to change the protocol to http/https depending on your setup</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">as</span> <span class="pre">default</span> <span class="pre">daemon</span></code>: check if you want set new Deploy daemon as default</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">https</span></code>: check if your Deploy daemon (Docker Socket Proxy) is configured with TLS</p></li>
+<li><dl class="simple">
+<dt>Deploy Config:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Network</span></code>: Docker network name, depends on your networking setup, enforces to “host” if “Enable https” is checked</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HaProxy</span> <span class="pre">password</span></code>: password for Docker Socket Proxy, if it is configured with TLS</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Compute</span> <span class="pre">Device</span></code>: CPU, CUDA or ROCm, depending on your hardware config on Deploy daemon host machine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">additional</span> <span class="pre">option</span></code> (see <a class="reference internal" href="CreationOfDeployDaemon.html#additional-options-list"><span class="std std-ref">Additional options</span></a>): setup additional KEY + VALUE deploy config options</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Check connection: to verify configuration is correct</p></li>
+<li><p>Register: to save the Deploy daemon configuration</p></li>
+</ol>
+<p>Deployment configuration examples can be found <a class="reference internal" href="DeployConfigurations.html#deploy-configs"><span class="std std-ref">here</span></a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="AppAPI documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="DeployConfigurations.html" class="btn btn-neutral float-right" title="Deployment configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Nextcloud GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
