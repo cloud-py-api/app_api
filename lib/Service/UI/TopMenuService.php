@@ -53,7 +53,7 @@ class TopMenuService {
 			$groupManager = $container->get(IGroupManager::class);
 			/** @var IUser $user */
 			$user = $userSession->getUser();
-			if ($menuEntry->getAdminRequired() === 1 && !$groupManager->isInGroup($user->getUID(), 'admin')) {
+			if ($menuEntry->getAdminRequired() === 1 && !$groupManager->isAdmin($user->getUID())) {
 				continue; // Skip this entry if user is not admin and entry requires admin privileges
 			}
 			$container->get(INavigationManager::class)->add(function () use ($container, $menuEntry) {
