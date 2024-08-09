@@ -20,6 +20,8 @@ use OCP\AppFramework\Db\Entity;
  * @method string getDisplayName()
  * @method void setTaskType(string $taskType)
  * @method string getTaskType()
+ * @method void setProvider(string $provider)
+ * @method string getProvider()
  * @method void setCustomTaskType(string|null $customTaskType)
  * @method string|null getCustomTaskType()
  */
@@ -27,8 +29,8 @@ class TaskProcessingProvider extends Entity implements JsonSerializable {
 	protected ?string $appId = null;
 	protected ?string $name = null;
 	protected ?string $displayName = null;
-	protected ?string $actionHandler = null;
 	protected ?string $taskType = null;
+	protected ?string $provider = null;
 	protected ?string $customTaskType = null;
 
 	public function __construct(array $params = []) {
@@ -36,6 +38,7 @@ class TaskProcessingProvider extends Entity implements JsonSerializable {
 		$this->addType('name', 'string');
 		$this->addType('display_name', 'string');
 		$this->addType('task_type', 'string');
+		$this->addType('provider', 'string');
 		$this->addType('custom_task_type', 'string');
 
 		if (isset($params['app_id'])) {
@@ -50,6 +53,9 @@ class TaskProcessingProvider extends Entity implements JsonSerializable {
 		if (isset($params['task_type'])) {
 			$this->setTaskType($params['task_type']);
 		}
+		if (isset($params['provider'])) {
+			$this->setProvider($params['provider']);
+		}
 		if (isset($params['custom_task_type'])) {
 			$this->setCustomTaskType($params['custom_task_type']);
 		}
@@ -61,6 +67,7 @@ class TaskProcessingProvider extends Entity implements JsonSerializable {
 			'name' => $this->name,
 			'display_name' => $this->displayName,
 			'task_type' => $this->taskType,
+			'provider' => $this->provider,
 			'custom_task_type' => $this->customTaskType,
 		];
 	}

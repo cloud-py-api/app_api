@@ -33,20 +33,20 @@ class TaskProcessingController extends OCSController {
 	#[PublicPage]
 	#[AppAPIAuth]
 	public function registerProvider(
-		string $name,
-		string $displayName,
-		string $taskType,
+		array $provider,
 		?array $customTaskType,
 	): DataResponse {
 		if (!$this->isSupported()) {
 			return new DataResponse([], Http::STATUS_NOT_IMPLEMENTED);
 		}
 
-		$provider = $this->taskProcessingService->registerTaskProcessingProvider(
-			$this->request->getHeader('EX-APP-ID'), $name, $displayName, $taskType, $customTaskType,
+		$providerObj = $this->taskProcessingService->registerTaskProcessingProvider(
+			$this->request->getHeader('EX-APP-ID'),
+			$provider,
+			$customTaskType,
 		);
 
-		if ($provider === null) {
+		if ($providerObj === null) {
 			return new DataResponse([], Http::STATUS_BAD_REQUEST);
 		}
 
