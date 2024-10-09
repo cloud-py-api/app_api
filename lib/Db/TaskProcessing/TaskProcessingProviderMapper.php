@@ -47,8 +47,8 @@ class TaskProcessingProviderMapper extends QBMapper {
 		$qb = $this->db->getQueryBuilder();
 		return $this->findEntity($qb->select('*')
 			->from($this->tableName)
-			->where($qb->expr()->eq('app_id', $qb->createNamedParameter($appId), IQueryBuilder::PARAM_STR))
-			->andWhere($qb->expr()->eq('name', $qb->createNamedParameter($name), IQueryBuilder::PARAM_STR))
+			->where($qb->expr()->eq('app_id', $qb->createNamedParameter($appId, IQueryBuilder::PARAM_STR)))
+			->andWhere($qb->expr()->eq('name', $qb->createNamedParameter($name, IQueryBuilder::PARAM_STR)))
 		);
 	}
 
