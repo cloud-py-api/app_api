@@ -2,8 +2,9 @@ name: Tests
 
 on:
   pull_request:
+    branches: [stable30]
   push:
-    branches: [main]
+    branches: [stable30]
   workflow_dispatch:
 
 permissions:
@@ -29,12 +30,7 @@ jobs:
       fail-fast: false
       matrix:
         php-version: [ '8.1' ]
-        server-version: [ 'stable28' ]
-        include:
-          - server-version: "stable29"
-            php-version: "8.2"
-          - server-version: "master"
-            php-version: "8.3"
+        server-version: [ 'stable30' ]
     env:
       DATABASE_PGSQL: 1
 
@@ -158,7 +154,7 @@ jobs:
 
   nc-py-api-mysql:
     runs-on: ubuntu-22.04
-    name: NC_Py_API • stable28 • 8.1 • MySQL
+    name: NC_Py_API • stable30 • 8.1 • MySQL
 
     services:
       mysql:
@@ -182,13 +178,13 @@ jobs:
         with:
           submodules: true
           repository: nextcloud/server
-          ref: stable28
+          ref: stable30
 
       - name: Checkout Notifications
         uses: actions/checkout@v3
         with:
           repository: nextcloud/notifications
-          ref: stable28
+          ref: stable30
           path: apps/notifications
 
       - name: Checkout AppAPI
@@ -265,13 +261,13 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: mysql_nc_py_api_stable28_8.1_nextcloud.log
+          name: mysql_nc_py_api_stable30_8.1_nextcloud.log
           path: data/nextcloud.log
           if-no-files-found: warn
 
   nc-py-api-mysql-apcu:
     runs-on: ubuntu-22.04
-    name: APCu • NC_Py_API • stable29 • 8.1 • MySQL
+    name: APCu • NC_Py_API • stable30 • 8.1 • MySQL
 
     services:
       mysql:
@@ -295,13 +291,13 @@ jobs:
         with:
           submodules: true
           repository: nextcloud/server
-          ref: stable29
+          ref: stable30
 
       - name: Checkout Notifications
         uses: actions/checkout@v3
         with:
           repository: nextcloud/notifications
-          ref: stable28
+          ref: stable30
           path: apps/notifications
 
       - name: Checkout AppAPI
@@ -381,7 +377,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: apcu_mysql_nc_py_api_stable29_8.1_nextcloud.log
+          name: apcu_mysql_nc_py_api_stable30_8.1_nextcloud.log
           path: data/nextcloud.log
           if-no-files-found: warn
 
@@ -391,7 +387,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        server-version: [ 'stable28', 'stable29' ]
+        server-version: [ 'stable30' ]
 
     services:
       oracle:

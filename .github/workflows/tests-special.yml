@@ -2,8 +2,9 @@ name: Tests Special
 
 on:
   pull_request:
+    branches: [stable30]
   push:
-    branches: [main]
+    branches: [stable30]
   workflow_dispatch:
 
 permissions:
@@ -50,7 +51,7 @@ jobs:
         with:
           submodules: true
           repository: nextcloud/server
-          ref: 'stable28'
+          ref: 'stable30'
 
       - name: Checkout AppAPI
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
