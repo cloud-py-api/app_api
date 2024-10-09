@@ -371,17 +371,24 @@ class ExAppsPageController extends Controller {
 		return array_merge($apps, $formattedLocalApps);
 	}
 
+	/**
+	 * Default ExApp enabling process.
+	 * Enabling approval via password confirmation.
+	 * @param string $appId name of the app that will be enabled
+	 * @param string daemonId ID of the daemon the app will be deployed on
+	 * @return JSONResponse empty when successful, HTTP Error when not
+	 */
 	#[PasswordConfirmationRequired]
-	public function enableApp(string $appId): JSONResponse {
+	public function enableApp(string $appId, string $daemonId): JSONResponse {
 		$updateRequired = false;
 		$exApp = $this->exAppService->getExApp($appId);
 		// If ExApp is not registered - then it's a "Deploy and Enable" action.
 		if (!$exApp) {
-			if (!$this->service->runOccCommand(sprintf("app_api:app:register --silent %s", $appId))) {
+			if (!$this->service->runOccCommand(sprintf("app_api:app:register --silent %s %s", $appId, $daemonId))) {
 				return new JSONResponse(['data' => ['message' => $this->l10n->t('Error starting install of ExApp')]], Http::STATUS_INTERNAL_SERVER_ERROR);
 			}
 			$elapsedTime = 0;
-			while ($elapsedTime < 5000000 && !$this->exAppService->getExApp($appId)) {
+			while ($elapsedTime < 50000000 && !$this->exAppService->getExApp($appId)) {
 				usleep(150000); // 0.15
 				$elapsedTime += 150000;
 			}

@@ -90,8 +90,8 @@ export default {
 				.then((response) => { rebuildNavigation() })
 				.catch((error) => { showError(error) })
 		},
-		enable(appId) {
-			this.$store.dispatch('enableApp', { appId })
+		enable(appId, daemon) {
+			this.$store.dispatch('enableApp', { appId, daemon })
 				.then((response) => { rebuildNavigation() })
 				.catch((error) => { showError(error) })
 		},

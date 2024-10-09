@@ -28,7 +28,7 @@
 					type="button"
 					:value="enableButtonText"
 					:disabled="!app.canInstall || installing || isLoading || !defaultDeployDaemonAccessible || isInitializing || isDeploying"
-					@click="enable(app.id)">
+					@click="enableButtonAction">
 				<input v-else-if="!app.active && !app.canInstall"
 					:title="forceEnableButtonTooltip"
 					:aria-label="forceEnableButtonTooltip"
@@ -37,6 +37,12 @@
 					:value="forceEnableButtonText"
 					:disabled="installing || isLoading || !defaultDeployDaemonAccessible"
 					@click="forceEnable(app.id)">
+				<DaemonSelectionModal
+					v-if="selectDaemonModal"
+					:show.sync="selectDaemonModal"
+					:daemons="dockerDaemons"
+					:default-daemon="defaultDaemon"
+					:app="app" />
 				<NcCheckboxRadioSwitch v-if="app.canUnInstall"
 					:checked="removeData"
 					:disabled="installing || isLoading || !defaultDeployDaemonAccessible"
@@ -110,6 +116,10 @@ import { NcCheckboxRadioSwitch } from '@nextcloud/vue'
 import AppManagement from '../../mixins/AppManagement.js'
 import PrefixMixin from './PrefixMixin.vue'
 import Markdown from './Markdown.vue'
+import DaemonSelectionModal from './DaemonSelectionModal.vue'
+
+import axios from '@nextcloud/axios'
+import { generateUrl } from '@nextcloud/router'
 
 export default {
 	name: 'AppDetails',
@@ -117,6 +127,7 @@ export default {
 	components: {
 		Markdown,
 		NcCheckboxRadioSwitch,
+		DaemonSelectionModal,
 	},
 	mixins: [AppManagement, PrefixMixin],
 
@@ -130,6 +141,9 @@ export default {
 	data() {
 		return {
 			removeData: false,
+			selectDaemonModal: false,
+			dockerDaemons: [],
+			defaultDaemon: '',
 		}
 	},
 
@@ -167,6 +181,28 @@ export default {
 	methods: {
 		toggleRemoveData() {
 			this.removeData = !this.removeData
+		},
+		showSelectionModal() {
+			this.selectDaemonModal = true
+		},
+		getAllDockerDaemons() {
+			return axios.get(generateUrl('/apps/app_api/daemons'))
+				.then(res => {
+					this.dockerDaemons = res.data.daemons.filter(function(daemon) {
+						return daemon.accepts_deploy_id === 'docker-install'
+					})
+					this.defaultDaemon = res.data.default_daemon_config
+				})
+		},
+		async enableButtonAction() {
+			await this.getAllDockerDaemons()
+			if (this.dockerDaemons.length === 1 && this.app.needsDownload) {
+				this.enable(this.app.id, this.dockerDaemons[0])
+			} else if (this.app.needsDownload) {
+				this.showSelectionModal()
+			} else {
+				this.enable(this.app.id, this.app.daemon)
+			}
 		},
 	},
 }

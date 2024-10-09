@@ -92,7 +92,7 @@
 				:aria-label="enableButtonTooltip"
 				type="primary"
 				:disabled="!app.canInstall || installing || isLoading || !defaultDeployDaemonAccessible || isInitializing || isDeploying"
-				@click.stop="enable(app.id)">
+				@click="enableButtonAction">
 				{{ enableButtonText }}
 			</NcButton>
 			<NcButton v-else-if="!app.active"
@@ -103,6 +103,12 @@
 				@click.stop="forceEnable(app.id)">
 				{{ forceEnableButtonText }}
 			</NcButton>
+			<DaemonSelectionModal
+				v-if="selectDaemonModal"
+				:show.sync="selectDaemonModal"
+				:daemons="dockerDaemons"
+				:default-daemon="defaultDaemon"
+				:app="app" />
 		</component>
 	</component>
 </template>
@@ -112,12 +118,17 @@ import AppScore from './AppScore.vue'
 import AppManagement from '../../mixins/AppManagement.js'
 import SvgFilterMixin from './SvgFilterMixin.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import DaemonSelectionModal from './DaemonSelectionModal.vue'
+
+import axios from '@nextcloud/axios'
+import { generateUrl } from '@nextcloud/router'
 
 export default {
 	name: 'AppItem',
 	components: {
 		AppScore,
 		NcButton,
+		DaemonSelectionModal,
 	},
 	mixins: [AppManagement, SvgFilterMixin],
 	props: {
@@ -150,6 +161,9 @@ export default {
 			removeData: false,
 			scrolled: false,
 			screenshotLoaded: false,
+			selectDaemonModal: false,
+			dockerDaemons: [],
+			defaultDaemon: '',
 		}
 	},
 	computed: {
@@ -196,6 +210,28 @@ export default {
 		getDataItemHeaders(columnName) {
 			return this.useBundleView ? [this.headers, columnName].join(' ') : null
 		},
+		showSelectionModal() {
+			this.selectDaemonModal = true
+		},
+		getAllDockerDaemons() {
+			return axios.get(generateUrl('/apps/app_api/daemons'))
+				.then(res => {
+					this.dockerDaemons = res.data.daemons.filter(function(daemon) {
+						return daemon.accepts_deploy_id === 'docker-install'
+					})
+					this.defaultDaemon = res.data.default_daemon_config
+				})
+		},
+		async enableButtonAction() {
+			await this.getAllDockerDaemons()
+			if (this.dockerDaemons.length === 1 && this.app.needsDownload) {
+				this.enable(this.app.id, this.dockerDaemons[0])
+			} else if (this.app.needsDownload) {
+				this.showSelectionModal()
+			} else {
+				this.enable(this.app.id, this.app.daemon)
+			}
+		},
 	},
 }
 </script>
@@ -222,4 +258,5 @@ export default {
 	border-radius: var(--border-radius);
 	padding: 3px 6px;
 }
+
 </style>
